@@ -1,0 +1,12 @@
+FROM php:7.2-fpm-alpine
+
+RUN docker-php-ext-install pdo pdo_mysql
+
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+COPY --chown=appuser:appgroup ./src /var/www/html
+USER appuser
+
+WORKDIR /var/www/html
+
+
+
