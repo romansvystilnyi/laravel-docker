@@ -38,6 +38,20 @@ services:
     networks:
       - laravel
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    links:
+      - mysql:db
+    ports:
+      - "8765:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    depends_on:
+      - mysql
+    networks:
+      - laravel
+
   php:
     build:
       context: .
