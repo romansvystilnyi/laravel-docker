@@ -23,6 +23,6 @@ Route::group(['namespace' => 'Library'], function () {
     Route::resource('/', 'BookController')->names('library.book');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->middleware('verified')->name('home');
