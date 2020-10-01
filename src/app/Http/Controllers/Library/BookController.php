@@ -22,7 +22,6 @@ class BookController extends BaseController
         if ($request->filled('genre')) {
             $queryBook->where('genre', '=', $request->genre);
         }
-//        dd($request->all());
         if ($request->filled('sort')) {
             switch ($request->sort) {
                 case "Number +":
@@ -54,73 +53,7 @@ class BookController extends BaseController
         $items = $queryBook->join('categories', 'books.category_id', '=', 'categories.id')
             ->select('categories.genre', 'books.id', 'books.category_id', 'books.title', 'books.author', 'books.content_html', 'books.slug')
             ->paginate(5);
-//        dd($items);
+
         return view('library.book.index', compact('title', 'items', 'genres'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
