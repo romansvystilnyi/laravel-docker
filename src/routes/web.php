@@ -43,6 +43,7 @@ Route::group($groupData, function () {
 $groupDataUsers = [
     'namespace' => 'Users\Admin',
     'prefix'    => 'admin',
+    'middleware' => ['auth','role:administrator,'],
 ];
 
 Route::group($groupDataUsers, function () {

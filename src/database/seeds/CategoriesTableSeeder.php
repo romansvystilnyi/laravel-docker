@@ -26,52 +26,52 @@ class CategoriesTableSeeder extends Seeder
         $categories = [];
 
         $categories[] = [
-            'title'     =>  $cName0,
+            'genre'     =>  $cName0,
             'slug'      => Str::of($cName0)->slug(),
             'parent_id' => 0,
         ];
         $categories[] = [
-            'title'     =>  $cName1,
+            'genre'     =>  $cName1,
             'slug'      => Str::of($cName1)->slug(),
             'parent_id' => 1,
         ];
         $categories[] = [
-            'title'     =>  $cName2,
+            'genre'     =>  $cName2,
             'slug'      => Str::of($cName2)->slug(),
             'parent_id' => 2,
         ];
         $categories[] = [
-            'title'     =>  $cName3,
+            'genre'     =>  $cName3,
             'slug'      => Str::of($cName3)->slug(),
             'parent_id' => 3,
         ];
         $categories[] = [
-            'title'     =>  $cName4,
+            'genre'     =>  $cName4,
             'slug'      => Str::of($cName4)->slug(),
             'parent_id' => 4,
         ];
         $categories[] = [
-            'title'     =>  $cName5,
+            'genre'     =>  $cName5,
             'slug'      => Str::of($cName5)->slug(),
             'parent_id' => 5,
         ];
         $categories[] = [
-            'title'     =>  $cName6,
+            'genre'     =>  $cName6,
             'slug'      => Str::of($cName6)->slug(),
             'parent_id' => 6,
         ];
         $categories[] = [
-            'title'     =>  $cName7,
+            'genre'     =>  $cName7,
             'slug'      => Str::of($cName7)->slug(),
             'parent_id' => 7,
         ];
         $categories[] = [
-            'title'     =>  $cName8,
+            'genre'     =>  $cName8,
             'slug'      => Str::of($cName8)->slug(),
             'parent_id' => 8,
         ];
         $categories[] = [
-            'title'     =>  $cName9,
+            'genre'     =>  $cName9,
             'slug'      => Str::of($cName9)->slug(),
             'parent_id' => 9,
         ];

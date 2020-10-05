@@ -37,7 +37,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @auth
+                            @if(Auth::user()->name == 'admin')
+                                <li>
+                                    <a class="text-decoration-none" href="{{ route('admin.users.index') }}">Users</a>
+                                </li>
+                            @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->

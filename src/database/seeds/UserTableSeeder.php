@@ -14,14 +14,19 @@ class UserTableSeeder extends Seeder
     {
         $data = [
             [
-                'name'      => 'unknown',
-                'email'     => 'unknown@g.g',
-                'password'  => bcrypt(Str::random(16)),
+                'name'      => 'admin',
+                'email'     => 'admin@g.g',
+                'password'  => bcrypt('111111'),
             ],
             [
-                'name'      => 'Author Name',
-                'email'     => 'author1@g.g',
-                'password'  => bcrypt('123123'),
+                'name'      => 'user',
+                'email'     => 'user@g.g',
+                'password'  => bcrypt('222222'),
+            ],
+            [
+                'name'      => 'guest',
+                'email'     => 'guest@g.g',
+                'password'  => bcrypt('333333'),
             ],
         ];
 
