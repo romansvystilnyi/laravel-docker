@@ -43,6 +43,12 @@
             </div>
             <div class="card justify-content-center col-md-12">
                 <div class="card-body">
+                    @auth
+                        @if(Auth::user()->name == 'admin')
+                            <a class="btn btn-primary" href="{{ route('library.admin.books.create') }}">Add</a>
+                            @include('library.book.admin.includes.result_messages')
+                        @endif
+                    @endauth
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -57,11 +63,31 @@
                         <tbody>
                         @foreach($items as $item)
                             <tr>
-                                <td>{{$item->id}}</td>
+                                @auth
+                                    @if(Auth::user()->name == 'admin')
+                                        <td>
+                                            <a class="text-decoration-none"
+                                               href="{{ route('library.admin.books.edit', $item->id) }}">{{$item->id}}</a>
+                                        </td>
+                                    @else
+                                        <td>{{$item->id}}</td>
+                                    @endif
+                                @else
+                                    <td>{{$item->id}}</td>
+                                @endauth
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->author }}</td>
-                                <td>{{ $item->content_html }}</td>
-                                <td><img src="{{ asset('images/library/test_img_book.png') }}" alt="the book"></td>
+                                <td>{!! $item->content_html !!}</td>
+                                <td>{!! $item->slug !!}</td>
+                                @if(file_exists('storage/books/' . $item->slug))
+                                    <td>
+                                        <img src="{{ asset('storage/books/' . $item->slug) }}" alt="the book">
+                                    </td>
+                                @else
+                                    <td>
+                                        <img src="{{ asset('images/library/test_img_book.png') }}" alt="the book">
+                                    </td>
+                                @endif
                                 <td>{{ $item->genre }}</td>
                             </tr>
                         @endforeach

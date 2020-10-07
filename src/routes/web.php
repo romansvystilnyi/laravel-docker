@@ -31,10 +31,11 @@ Route::get('/home', 'HomeController@index')->middleware('verified')->name('home'
 $groupData = [
     'namespace' => 'Library\Admin',
     'prefix'    => 'admin/library',
+    'middleware' => ['auth','role:administrator,'],
 ];
 
 Route::group($groupData, function () {
-    $methods = ['index', 'edit', 'update', 'create', 'store',];
+    $methods = ['index', 'edit', 'update', 'create', 'store', 'destroy',];
     Route::resource('books', 'BookController')
         ->only($methods)
         ->names('library.admin.books');
