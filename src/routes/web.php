@@ -27,6 +27,16 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified')->name('home');
 
+Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook')
+    ->name('login.facebook');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookCallback')
+    ->name('login.facebook.callback');
+
+Route::get('login/google', 'Auth\LoginController@redirectToGoogle')
+    ->name('login.google');
+Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback')
+    ->name('login.google.callback');
+
 // Admin
 $groupData = [
     'namespace' => 'Library\Admin',

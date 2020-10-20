@@ -78,7 +78,6 @@
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->author }}</td>
                                 <td>{!! $item->content_html !!}</td>
-                                <td>{!! $item->slug !!}</td>
                                 @if(file_exists('storage/books/' . $item->slug))
                                     <td>
                                         <img src="{{ asset('storage/books/' . $item->slug) }}" alt="the book">
