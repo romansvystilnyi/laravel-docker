@@ -1,0 +1,255 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel Swagger API documentation",
+        "contact": {
+            "email": "admin@localhost"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8088/api",
+            "description": "Laravel Swagger API server"
+        }
+    ],
+    "paths": {
+        "/books": {
+            "get": {
+                "tags": [
+                    "Library"
+                ],
+                "summary": "Display the list of books",
+                "operationId": "booksAll",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Library"
+                ],
+                "summary": "Add a new book to the library",
+                "description": "",
+                "operationId": "addBook",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/books/{id}": {
+            "put": {
+                "tags": [
+                    "Library"
+                ],
+                "summary": "Update book by ID",
+                "operationId": "bookUpdate",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of book",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Library"
+                ],
+                "summary": "Delete book by ID",
+                "operationId": "deleteBook",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of book",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Deleted"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "StoreRequest": {
+                "title": "Example storring request",
+                "description": "Some simple request createa as example",
+                "properties": {
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "user_id for storring",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "Title for storring",
+                        "type": "string",
+                        "example": "Title book"
+                    },
+                    "slug": {
+                        "title": "slug",
+                        "description": "slug for storring(generated automatically)",
+                        "type": "string",
+                        "example": ""
+                    },
+                    "genre": {
+                        "title": "genre",
+                        "description": "category_id for storring(from 1 to 10)",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "author": {
+                        "title": "author",
+                        "description": "Author name for storring",
+                        "type": "string",
+                        "example": "test author"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "Description for storring",
+                        "type": "string",
+                        "example": "About our company"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateRequest": {
+                "title": "Example updating request",
+                "description": "Some simple request createa as example",
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "Update title for storring",
+                        "type": "string",
+                        "example": "Title book"
+                    },
+                    "slug": {
+                        "title": "slug",
+                        "description": "Update slug for storring(generated automatically)",
+                        "type": "string",
+                        "example": ""
+                    },
+                    "genre": {
+                        "title": "genre",
+                        "description": "Update category_id for storring(from 1 to 10)",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "author": {
+                        "title": "author",
+                        "description": "Author name for storring",
+                        "type": "string",
+                        "example": "Update test author"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "Description for storring",
+                        "type": "string",
+                        "example": "Update.About our company"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "X-APP-ID": {
+                "type": "apiKey",
+                "name": "X-APP-ID",
+                "in": "header"
+            },
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://localhost/oauth/authorize",
+                        "tokenUrl": "http://localhost/oauth/token",
+                        "refreshUrl": "http://localhost/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Library",
+            "description": "Displaying a list of books in the form of a table, adding, editing and deleting"
+        }
+    ],
+    "security": [
+        []
+    ]
+}

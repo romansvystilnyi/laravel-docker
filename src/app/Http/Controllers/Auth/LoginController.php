@@ -74,7 +74,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Redirect the user to the Facebook authentication page.
+     * Redirect the user to the Google authentication page.
      *
      * @return \Illuminate\Http\Response
      */
@@ -84,7 +84,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Obtain the user information from Facebook.
+     * Obtain the user information from Google.
      *
      * @return \Illuminate\Http\Response
      */
